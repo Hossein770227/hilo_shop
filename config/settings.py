@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # my apps
     "accounts",
     "shop",
+    "website",
 ]
 
 MIDDLEWARE = [
