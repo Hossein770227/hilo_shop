@@ -1,6 +1,7 @@
 <!doctype html>
 {% load static %}
-<html lang="zxx">
+{% load i18n %}
+<html lang="fa" dir='rtl'>
     <head>
         <!-- Required Meta Tags -->
         <meta charset="UTF-8">
@@ -298,10 +299,8 @@
                                 <div class="language-nav-list">
                                     <select class="language-list-item">
                                         <option>English</option>
-                                        <option>العربيّة</option>
-                                        <option>Deutsch</option>
-                                        <option>Português</option>
-                                        <option>简体中文</option>
+                                        <option>{% trans "persian" %}</option>
+
                                     </select>	
                                 </div>
 
@@ -328,7 +327,7 @@
             </div>
         </div>
         <!-- End Navbar Area -->
-
+        {% include "includes/messages.html" %}
         {% block content %}{% endblock content %}
 
         <!-- Footer Area -->
