@@ -52,7 +52,7 @@ class UserRegisterCodeView(View):
     form_class = VerifyCodeForm
     def get(self, request):
         form = self.form_class()
-        user_session = request.session.get('user_registration_info')
+        user_session = request.session.get('user_registration_info')  
         if not user_session:
             messages.error(request, _('Registration information not found.'))
             return redirect('accounts:user_register')  
@@ -87,12 +87,12 @@ class UserRegisterCodeView(View):
                 code_instance.delete() 
                 messages.success(request, _('You have successfully registered.'))
                 login(request, user)  
-                return redirect('store:product_list') 
+                return redirect('shop:food_list') 
             else:
                 messages.error(request, _('This code is incorrect.'))
                 return redirect('accounts:verify_code')  
         
-        return redirect('store:product_list') 
+        return redirect('shop:food_list') 
 
 
 def login_view(request):
@@ -110,10 +110,10 @@ def login_view(request):
                     return  redirect(next_url)
                 else:
                     messages.success(request, _('You have successfully logged in.'))
-                    return redirect('store:product_list')
+                    return redirect('shop:food_list')
             else:
                 messages.warning(request, _("this phone number does not exist please already registered"))
-                return redirect('store:product_list') 
+                return redirect('shop:food_list') 
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', context={'form': form})
@@ -124,7 +124,7 @@ def logout_view(request):
     if request.method =='POST':
         logout(request)
         messages.error(request, _('you successfully logout'))
-        return redirect('store:product_list')
+        return redirect('shop:food_list')
 
 
 
@@ -136,7 +136,7 @@ def password_change_view(request):
             form.save()
             update_session_auth_hash(request,form.user)
             messages.success(request, _('your password successfully changed'))
-            return redirect('store:product_list')
+            return redirect('shop:food_list')
         return redirect('accounts:change_password')
     else:
         form = PasswordChangeForm(user=request.user)
