@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% load bootstrap %}
+
+{% block page_title %}
+    {% trans " login" %}
+{% endblock page_title %}
+
+{% block content %}
+        <!-- User Area -->
+        <div class="user-area pt-100 pb-70">
+            <div class="container">
+                <div class="user-width">
+                    <div class="user-form">
+                        <div class="contact-form">
+                            <h2>{% trans "login" %}</h2>
+                            <form action='' method='POST'>
+                                {% csrf_token %}
+                                {{ form|bootstrap_horizontal:'col-lg-8' }}
+                                <button type="submit">
+                                    {% trans "login" %}
+                                </button> 
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- User Area End -->
+>
+{% endblock content %}
